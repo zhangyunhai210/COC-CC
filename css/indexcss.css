@@ -1,0 +1,17 @@
+body{
+    background-color: darkgray;
+}
+#OverDiv{
+    height: 70%;
+    width: 70%
+    margin: 70% auto 70% auto;
+    text-align: left;
+    background-color: beige;
+}
+#Onediv{
+    height: 90%;
+    width: 30%;
+    position: relative;
+    top:3%;
+    left: 3%;
+}
