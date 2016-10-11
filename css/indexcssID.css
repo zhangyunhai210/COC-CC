@@ -1,0 +1,27 @@
+body{
+    background-color: darkgray;
+}
+#OverDiv{
+    height: 95%;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    top:100%;
+    transform: translateY(3%);
+    /*有多种方法，也可以用自身长宽的一半作为负边距移动*/
+    background-color:rgba(88,88,88,0.7);
+    overflow: hidden;
+}
+#Onediv{
+
+    height: 90%;
+    width: 100%;
+    position: relative;
+}
+
+#HeadButton{
+    top:100%;
+    margin: 0 20%;
+    position: relative;
+    transform: translateY(10%);
+}
