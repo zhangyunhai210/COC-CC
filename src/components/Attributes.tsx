@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import type { Attributes as AttrsType, AttributeName, CoCEdition } from '../types/character';
 import { ATTRIBUTE_LABELS } from '../types/character';
-import { ATTRIBUTE_FORMULAS, rollAttributeDetailed, rollAllAttributes } from '../rules/attributes';
+import { ATTRIBUTE_FORMULAS, rollAttributeDetailed } from '../rules/attributes';
 
 interface Props {
   attributes: AttrsType;
@@ -31,16 +31,15 @@ export function Attributes({ attributes, edition, onChange }: Props) {
   /** 一键掷所有属性 */
   const handleRollAll = useCallback(() => {
     setRollingAttr('ALL');
-    const newAttrs = rollAllAttributes();
+    const newAttrs: Partial<AttrsType> = {};
     const newRolls: Record<string, number[]> = {};
     for (const attr of attrNames) {
-      const formula = ATTRIBUTE_FORMULAS[attr];
-      if (formula === '3D6') newRolls[attr] = [0, 0, 0];
-      else if (formula === '2D6+6') newRolls[attr] = [0, 0];
-      else newRolls[attr] = [0, 0, 0];
+      const result = rollAttributeDetailed(attr);
+      newAttrs[attr] = result.total;
+      newRolls[attr] = result.dice;
     }
     setLastRoll(newRolls);
-    onChange(newAttrs);
+    onChange(newAttrs as AttrsType);
     setTimeout(() => setRollingAttr(null), 400);
   }, [onChange, attrNames]);
 
