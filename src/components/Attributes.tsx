@@ -79,7 +79,7 @@ export function Attributes({ attributes, edition, onChange }: Props) {
                 max={30}
               />
               {lastRoll[attr] && (
-                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+                <span className="attr-dice-detail">
                   [{lastRoll[attr].join('+')}
                   {ATTRIBUTE_FORMULAS[attr].includes('+') && `+${ATTRIBUTE_FORMULAS[attr].split('+')[1]}`}]
                 </span>
