@@ -1,0 +1,438 @@
+/* 主应用布局 */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 页头 */
+.app-header {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-dark-green), var(--accent-gold), var(--accent-dark-green));
+}
+
+.app-title {
+  font-family: var(--font-main);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 8px;
+  letter-spacing: 4px;
+}
+
+.app-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* 版本选择器 */
+.version-selector {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.version-btn {
+  padding: 10px 28px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.version-btn:hover {
+  border-color: var(--accent-green);
+  color: var(--text-primary);
+}
+
+.version-btn.active {
+  background: var(--accent-dark-green);
+  border-color: var(--accent-green);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(46, 160, 67, 0.3);
+}
+
+/* 卡片通用样式 */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-family: var(--font-main);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title .icon {
+  font-size: 1.1rem;
+}
+
+/* 基本信息表单 */
+.basic-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  min-width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.form-field select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 属性区域 */
+.attributes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.attribute-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.attribute-row:hover {
+  border-color: var(--border-accent);
+}
+
+.attr-name {
+  font-weight: 600;
+  min-width: 70px;
+  color: var(--text-primary);
+}
+
+.attr-name-en {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.attr-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  min-width: 36px;
+  text-align: center;
+}
+
+.attr-formula {
+  font-size: 12px;
+  color: var(--text-muted);
+  min-width: 50px;
+}
+
+.attr-roll-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: var(--accent-dark-green);
+  border-color: var(--accent-green);
+  color: #fff;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.attr-roll-btn:hover {
+  background: var(--accent-green);
+}
+
+.roll-all-btn {
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent-dark-green), #1a7a3e);
+  border: 2px solid var(--accent-green);
+  color: #fff;
+  border-radius: 6px;
+  align-self: center;
+}
+
+.roll-all-btn:hover {
+  background: linear-gradient(135deg, #1a7a3e, var(--accent-green));
+  box-shadow: 0 0 16px rgba(46, 160, 67, 0.4);
+}
+
+/* 掷骰动画 */
+@keyframes diceRoll {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.3) rotate(10deg); }
+  60% { transform: scale(0.9) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.attr-value.rolling {
+  animation: diceRoll 0.4s ease;
+  color: #fff;
+}
+
+/* 派生属性 */
+.derived-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.derived-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.derived-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.derived-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.derived-value.hp { color: #e05555; }
+.derived-value.mp { color: #5588dd; }
+.derived-value.san { color: #aa66cc; }
+
+/* 技能区域 */
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-points-info {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.skill-points-label {
+  color: var(--text-secondary);
+}
+
+.skill-points-value {
+  font-weight: 700;
+}
+
+.skill-points-value.over {
+  color: var(--accent-red);
+}
+
+.skill-points-value.ok {
+  color: var(--accent-green);
+}
+
+.skills-category {
+  margin-bottom: 16px;
+}
+
+.skills-category-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  padding: 6px 12px;
+  background: rgba(61, 109, 143, 0.15);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 4px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background-color 0.15s;
+}
+
+.skill-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.skill-row.occupation-skill {
+  background: rgba(46, 160, 67, 0.08);
+  border-left: 2px solid var(--accent-green);
+}
+
+.skill-name {
+  min-width: 100px;
+  color: var(--text-primary);
+}
+
+.skill-name-en {
+  color: var(--text-muted);
+  font-size: 11px;
+  min-width: 80px;
+}
+
+.skill-base {
+  color: var(--text-muted);
+  min-width: 36px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.skill-input {
+  width: 50px;
+  padding: 3px 6px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.skill-total {
+  font-weight: 700;
+  min-width: 36px;
+  text-align: center;
+  color: var(--accent-gold);
+}
+
+.skill-type-tag {
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.skill-type-tag.occ {
+  background: var(--accent-dark-green);
+}
+
+.skill-type-tag.int {
+  background: var(--accent-purple);
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+
+  .app-title {
+    font-size: 1.6rem;
+  }
+
+  .basic-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .attributes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .derived-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skills-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 年龄提示 */
+.age-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.age-warning {
+  font-size: 12px;
+  color: var(--accent-red);
+  margin-top: 2px;
+}
+
+/* 操作按钮组 */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 版本差异提示 */
+.edition-note {
+  font-size: 12px;
+  color: var(--accent-blue);
+  padding: 8px 12px;
+  background: rgba(61, 109, 143, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid var(--accent-blue);
+  margin-bottom: 12px;
+}
